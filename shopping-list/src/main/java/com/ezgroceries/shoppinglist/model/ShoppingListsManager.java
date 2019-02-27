@@ -1,21 +1,21 @@
 package com.ezgroceries.shoppinglist.model;
 
-import com.ezgroceries.shoppinglist.model.entities.Cocktail;
 import com.ezgroceries.shoppinglist.model.entities.ShoppingList;
 import com.ezgroceries.shoppinglist.model.requests.AddCocktailRequest;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class ShoppingListsManager {
 
     private final List<ShoppingList> shoppingLists;
-    private final CocktailManager cocktailManager;
+    private CocktailManager cocktailManager;
 
-    public ShoppingListsManager() {
-        this.cocktailManager = new CocktailManager();
+    public ShoppingListsManager(CocktailManager cocktailManager) {
+        this.cocktailManager = cocktailManager;
         this.shoppingLists = new ArrayList<ShoppingList>();
     }
 

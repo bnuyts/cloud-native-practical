@@ -1,14 +1,14 @@
 package com.ezgroceries.shoppinglist.controllers;
 
 import com.ezgroceries.shoppinglist.model.ShoppingListsManager;
-import com.ezgroceries.shoppinglist.model.requests.AddCocktailRequest;
 import com.ezgroceries.shoppinglist.model.entities.ShoppingList;
+import com.ezgroceries.shoppinglist.model.requests.AddCocktailRequest;
 import com.ezgroceries.shoppinglist.model.requests.ShoppingListRequest;
-import com.ezgroceries.shoppinglist.model.entities.Cocktail;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/shopping-lists", produces = "application/json")
@@ -16,8 +16,8 @@ public class ShoppingListsController {
 
     private final ShoppingListsManager shoppingListsManager;
 
-    public ShoppingListsController() {
-        this.shoppingListsManager = new ShoppingListsManager();
+    public ShoppingListsController(ShoppingListsManager shoppingListsManager) {
+        this.shoppingListsManager = shoppingListsManager;
     }
 
     @GetMapping("/{shoppingListId}")
