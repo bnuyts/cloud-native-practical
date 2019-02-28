@@ -14,6 +14,7 @@ import java.util.UUID;
 @RequestMapping(value = "/shopping-lists", produces = "application/json")
 public class ShoppingListsController {
 
+    // TODO maak deze final
     private ShoppingListsManager shoppingListsManager;
 
     public ShoppingListsController(ShoppingListsManager shoppingListsManager) {
@@ -39,6 +40,8 @@ public class ShoppingListsController {
     @PostMapping(value = "/{shoppingListId}/cocktails")
     @ResponseStatus(HttpStatus.OK)
     public List<AddCocktailRequest> AddCocktailToShoppingList(@PathVariable UUID shoppingListId, @RequestBody List<AddCocktailRequest> cocktails) {
+        // TODO Bad design. Dezelfde lijst terugsturen die je ontvangen hebt, is niet echt wat je als consumer van een API verwacht
+        // Je kan een lege inhoud terugsturen of je gan de inhoud van de shoppingList teruggeven.
         this.shoppingListsManager.addCocktailToShoppingList(shoppingListId, cocktails);
         return cocktails;
     }

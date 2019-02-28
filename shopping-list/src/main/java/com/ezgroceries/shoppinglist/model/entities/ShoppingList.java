@@ -24,6 +24,8 @@ public class ShoppingList {
         this.ingredients = new HashSet<>();
     }
 
+    // TODO gebruik hier StringUtils.isNotEmpty
+    // De huidige code kan een Nullpointer gooien
     public void addIngredient(String ingredient) {
         if(!ingredient.isEmpty()) {
             this.ingredients.add(ingredient);

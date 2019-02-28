@@ -7,6 +7,8 @@ import java.util.List;
 
 public class CocktailDBResponse {
 
+    // TODO probeer consistent te zijn in het gebruik van Lombok
+
     private List<DrinkResource> drinks;
 
     public List<DrinkResource> getDrinks() {

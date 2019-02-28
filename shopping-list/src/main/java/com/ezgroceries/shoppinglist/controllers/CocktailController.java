@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping(value = "/cocktails", produces = "application/json")
 public class CocktailController {
 
+    // TODO maak deze final
     private CocktailManager cocktailManager;
 
     public CocktailController(CocktailManager cocktailManager) {

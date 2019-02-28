@@ -16,6 +16,7 @@ public class ShoppingListsManager {
 
     public ShoppingListsManager(CocktailManager cocktailManager) {
         this.cocktailManager = cocktailManager;
+        // TODO verwijder de extra ShoppingList in new Array<ShoppingList>
         this.shoppingLists = new ArrayList<ShoppingList>();
     }
 

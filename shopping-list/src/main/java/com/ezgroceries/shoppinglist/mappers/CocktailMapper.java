@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CocktailMapper {
+    // TODO rename deze method. In Java start een method nooit met een hoofdletter
     public static Cocktail MapCocktailDB(CocktailDBResponse.DrinkResource drinkResource) {
         List<String> ingredients = new ArrayList<>(Arrays.asList(drinkResource.getStrIngredient1(),
                                                 drinkResource.getStrIngredient2(),
