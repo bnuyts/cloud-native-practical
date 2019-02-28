@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequestMapping(value = "/shopping-lists", produces = "application/json")
 public class ShoppingListsController {
 
-    private final ShoppingListsManager shoppingListsManager;
+    private ShoppingListsManager shoppingListsManager;
 
     public ShoppingListsController(ShoppingListsManager shoppingListsManager) {
         this.shoppingListsManager = shoppingListsManager;

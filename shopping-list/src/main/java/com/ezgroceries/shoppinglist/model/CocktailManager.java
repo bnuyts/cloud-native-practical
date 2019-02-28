@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Component
 public class CocktailManager {
 
-    CocktailDBClient cocktailDBClient;
+    private CocktailDBClient cocktailDBClient;
 
     public CocktailManager(CocktailDBClient cocktailDBClient) {
         this.cocktailDBClient = cocktailDBClient;

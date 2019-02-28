@@ -11,7 +11,7 @@ import java.util.UUID;
 @Component
 public class ShoppingListsManager {
 
-    private final List<ShoppingList> shoppingLists;
+    private List<ShoppingList> shoppingLists;
     private CocktailManager cocktailManager;
 
     public ShoppingListsManager(CocktailManager cocktailManager) {
