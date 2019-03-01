@@ -13,8 +13,7 @@ import java.util.List;
 @RequestMapping(value = "/cocktails", produces = "application/json")
 public class CocktailController {
 
-    // TODO maak deze final
-    private CocktailManager cocktailManager;
+    private final CocktailManager cocktailManager;
 
     public CocktailController(CocktailManager cocktailManager) {
         this.cocktailManager = cocktailManager;
@@ -22,7 +21,7 @@ public class CocktailController {
 
     @GetMapping
     public List<Cocktail> get(@RequestParam String search) {
-        return this.cocktailManager.search(search);
+        return cocktailManager.search(search);
     }
-    
+
 }

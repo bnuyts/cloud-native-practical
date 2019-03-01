@@ -1,7 +1,7 @@
 package com.ezgroceries.shoppinglist.mappers;
 
 import com.ezgroceries.shoppinglist.model.entities.Cocktail;
-import com.ezgroceries.shoppinglist.model.entities.CocktailDBResponse;
+import com.ezgroceries.shoppinglist.model.entities.DrinkResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,11 +9,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class CocktailMapper {
-    // TODO rename deze method. In Java start een method nooit met een hoofdletter
-    public static Cocktail MapCocktailDB(CocktailDBResponse.DrinkResource drinkResource) {
+    public static Cocktail mapCocktailDB(DrinkResource drinkResource) {
         List<String> ingredients = new ArrayList<>(Arrays.asList(drinkResource.getStrIngredient1(),
-                                                drinkResource.getStrIngredient2(),
-                                                drinkResource.getStrIngredient3()));
+                drinkResource.getStrIngredient2(),
+                drinkResource.getStrIngredient3()));
         ingredients.removeIf(String::isEmpty);
 
         return new Cocktail(

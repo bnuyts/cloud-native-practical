@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Component
 public class CocktailManager {
 
-    private CocktailDBClient cocktailDBClient;
+    private final CocktailDBClient cocktailDBClient;
 
     public CocktailManager(CocktailDBClient cocktailDBClient) {
         this.cocktailDBClient = cocktailDBClient;
@@ -31,6 +31,6 @@ public class CocktailManager {
     private List<Cocktail> getResources(String search) {
         CocktailDBResponse response = cocktailDBClient.searchCocktails(search);
 
-        return response.getDrinks().stream().map(CocktailMapper::MapCocktailDB).collect(Collectors.toList());
+        return response.getDrinks().stream().map(CocktailMapper::mapCocktailDB).collect(Collectors.toList());
     }
 }
