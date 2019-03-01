@@ -21,24 +21,24 @@ public class ShoppingListsController {
     }
 
     @GetMapping("/{shoppingListId}")
-    public ShoppingList GetShoppingList(@PathVariable UUID shoppingListId) {
+    public ShoppingList getShoppingList(@PathVariable UUID shoppingListId) {
         return shoppingListsManager.getShoppingList(shoppingListId);
     }
 
     @GetMapping
-    public List<ShoppingList> GetShoppingLists() {
+    public List<ShoppingList> getShoppingLists() {
         return shoppingListsManager.getShoppingLists();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ShoppingList CreateShoppingList(@RequestBody ShoppingListRequest request) {
+    public ShoppingList createShoppingList(@RequestBody ShoppingListRequest request) {
         return shoppingListsManager.create(request.getName());
     }
 
     @PostMapping(value = "/{shoppingListId}/cocktails")
     @ResponseStatus(HttpStatus.OK)
-    public List<AddCocktailRequest> AddCocktailToShoppingList(@PathVariable UUID shoppingListId, @RequestBody List<AddCocktailRequest> cocktails) {
+    public List<AddCocktailRequest> addCocktailToShoppingList(@PathVariable UUID shoppingListId, @RequestBody List<AddCocktailRequest> cocktails) {
         // TODO Bad design. Dezelfde lijst terugsturen die je ontvangen hebt, is niet echt wat je als consumer van een API verwacht
         // Je kan een lege inhoud terugsturen of je gan de inhoud van de shoppingList teruggeven.
         shoppingListsManager.addCocktailToShoppingList(shoppingListId, cocktails);
