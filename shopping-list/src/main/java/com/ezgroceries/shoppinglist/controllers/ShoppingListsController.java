@@ -39,8 +39,6 @@ public class ShoppingListsController {
     @PostMapping(value = "/{shoppingListId}/cocktails")
     @ResponseStatus(HttpStatus.OK)
     public List<AddCocktailRequest> addCocktailToShoppingList(@PathVariable UUID shoppingListId, @RequestBody List<AddCocktailRequest> cocktails) {
-        // TODO Bad design. Dezelfde lijst terugsturen die je ontvangen hebt, is niet echt wat je als consumer van een API verwacht
-        // Je kan een lege inhoud terugsturen of je gan de inhoud van de shoppingList teruggeven.
         shoppingListsManager.addCocktailToShoppingList(shoppingListId, cocktails);
         return cocktails;
     }
