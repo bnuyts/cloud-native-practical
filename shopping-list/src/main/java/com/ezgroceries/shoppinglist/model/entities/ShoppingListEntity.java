@@ -1,18 +1,17 @@
 package com.ezgroceries.shoppinglist.model.entities;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.UUID;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "cocktail")
+@Table(name = "shopping_list")
 public class ShoppingListEntity {
 
     @Id

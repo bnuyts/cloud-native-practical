@@ -1,14 +1,18 @@
 package com.ezgroceries.shoppinglist.services;
 
+import com.ezgroceries.shoppinglist.mappers.ShoppingListMapper;
 import com.ezgroceries.shoppinglist.model.ShoppingListsManager;
 import com.ezgroceries.shoppinglist.model.entities.ShoppingList;
+import com.ezgroceries.shoppinglist.model.entities.ShoppingListEntity;
 import com.ezgroceries.shoppinglist.model.requests.AddCocktailRequest;
 import com.ezgroceries.shoppinglist.repositories.ShoppingListRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
+@Primary
 @Service
 public class ShoppingListService implements ShoppingListsManager {
 
@@ -18,10 +22,6 @@ public class ShoppingListService implements ShoppingListsManager {
         this.shoppingListRepository = shoppingListRepository;
     }
 
-//    public ShoppingListResource create(ShoppingListResource shoppingListResource) {
-//        ...
-//    }
-
     @Override
     public void addCocktailToShoppingList(UUID shoppingListId, List<AddCocktailRequest> cocktails) {
 
@@ -29,16 +29,21 @@ public class ShoppingListService implements ShoppingListsManager {
 
     @Override
     public ShoppingList create(String name) {
-        return null;
+        ShoppingListEntity shoppingList = new ShoppingListEntity();
+        shoppingList.setId(UUID.randomUUID());
+        shoppingList.setName(name);
+        shoppingListRepository.save(shoppingList);
+        return ShoppingListMapper.toShoppingList(shoppingList);
     }
 
     @Override
     public ShoppingList getShoppingList(UUID shoppingListId) {
-        return null;
+        return shoppingListRepository.findById(shoppingListId).map(ShoppingListMapper::toShoppingList).get();
     }
 
     @Override
     public List<ShoppingList> getShoppingLists() {
-        return null;
+        List<ShoppingListEntity> shoppingListEntities = (List<ShoppingListEntity>) shoppingListRepository.findAll();
+        return shoppingListEntities.stream().map(ShoppingListMapper::toShoppingList).collect(Collectors.toList());
     }
 }

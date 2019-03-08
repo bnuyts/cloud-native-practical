@@ -4,14 +4,11 @@ import com.ezgroceries.shoppinglist.clients.CocktailDBClient;
 import com.ezgroceries.shoppinglist.mappers.CocktailMapper;
 import com.ezgroceries.shoppinglist.model.entities.Cocktail;
 import com.ezgroceries.shoppinglist.model.entities.CocktailDBResponse;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
-@Primary
 @Component
 public class CocktailManagerImpl implements CocktailManager {
 

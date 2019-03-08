@@ -2,14 +2,11 @@ package com.ezgroceries.shoppinglist.model;
 
 import com.ezgroceries.shoppinglist.model.entities.ShoppingList;
 import com.ezgroceries.shoppinglist.model.requests.AddCocktailRequest;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.stereotype.Component;
 
-@Primary
 @Component
 public class ShoppingListsManagerImpl implements ShoppingListsManager {
 
