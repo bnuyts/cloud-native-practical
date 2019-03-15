@@ -32,7 +32,7 @@ public class MainConfig {
     }
 
     @Bean
-    public ShoppingListsManager shoppingListsManager(ShoppingListRepository shoppingListRepository) {
-        return new ShoppingListService(shoppingListRepository);
+    public ShoppingListsManager shoppingListsManager(CocktailRepository cocktailRepository, ShoppingListRepository shoppingListRepository) {
+        return new ShoppingListService(cocktailRepository, shoppingListRepository);
     }
 }
