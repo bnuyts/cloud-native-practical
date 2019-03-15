@@ -1,5 +1,12 @@
 package com.ezgroceries.shoppinglist.config;
 
+import com.ezgroceries.shoppinglist.clients.CocktailDBClient;
+import com.ezgroceries.shoppinglist.model.CocktailManager;
+import com.ezgroceries.shoppinglist.model.ShoppingListsManager;
+import com.ezgroceries.shoppinglist.repositories.CocktailRepository;
+import com.ezgroceries.shoppinglist.repositories.ShoppingListRepository;
+import com.ezgroceries.shoppinglist.services.CocktailService;
+import com.ezgroceries.shoppinglist.services.ShoppingListService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -17,5 +24,15 @@ public class MainConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
+    }
+
+    @Bean
+    public CocktailManager cocktailManager(CocktailRepository cocktailRepository, CocktailDBClient cocktailDBClient) {
+        return new CocktailService(cocktailRepository, cocktailDBClient);
+    }
+
+    @Bean
+    public ShoppingListsManager shoppingListsManager(ShoppingListRepository shoppingListRepository) {
+        return new ShoppingListService(shoppingListRepository);
     }
 }
