@@ -8,6 +8,7 @@ import com.ezgroceries.shoppinglist.model.entities.CocktailEntity;
 import com.ezgroceries.shoppinglist.model.entities.DrinkResource;
 import com.ezgroceries.shoppinglist.repositories.CocktailRepository;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -37,7 +38,7 @@ public class CocktailService implements CocktailManager {
         return null;
     }
 
-    public List<Cocktail> mergeCocktails(List<DrinkResource> drinks) {
+    private List<Cocktail> mergeCocktails(List<DrinkResource> drinks) {
         //Get all the idDrink attributes
         List<String> ids = drinks.stream().map(DrinkResource::getIdDrink).collect(Collectors.toList());
 
@@ -53,6 +54,10 @@ public class CocktailService implements CocktailManager {
                 newCocktailEntity.setId(UUID.randomUUID());
                 newCocktailEntity.setIdDrink(drinkResource.getIdDrink());
                 newCocktailEntity.setName(drinkResource.getStrDrink());
+                newCocktailEntity.setGlass(drinkResource.getStrGlass());
+                newCocktailEntity.setImage(drinkResource.getStrDrinkThumb());
+                newCocktailEntity.setInstructions(drinkResource.getStrInstructions());
+                newCocktailEntity.setIngredients(new HashSet<>(getIngredients(drinkResource)));
                 cocktailEntity = cocktailRepository.save(newCocktailEntity);
             }
             return cocktailEntity;
