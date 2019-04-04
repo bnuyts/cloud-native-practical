@@ -1,7 +1,6 @@
 package com.ezgroceries.shoppinglist.services;
 
 import com.ezgroceries.shoppinglist.mappers.ShoppingListMapper;
-import com.ezgroceries.shoppinglist.model.ShoppingListsManager;
 import com.ezgroceries.shoppinglist.model.entities.CocktailEntity;
 import com.ezgroceries.shoppinglist.model.entities.ShoppingList;
 import com.ezgroceries.shoppinglist.model.entities.ShoppingListEntity;
@@ -14,12 +13,12 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ShoppingListService implements ShoppingListsManager {
+public class ShoppingListServiceImpl implements ShoppingListsService {
 
     private final CocktailRepository cocktailRepository;
     private final ShoppingListRepository shoppingListRepository;
 
-    public ShoppingListService(CocktailRepository cocktailRepository, ShoppingListRepository shoppingListRepository) {
+    public ShoppingListServiceImpl(CocktailRepository cocktailRepository, ShoppingListRepository shoppingListRepository) {
         this.cocktailRepository = cocktailRepository;
         this.shoppingListRepository = shoppingListRepository;
     }
