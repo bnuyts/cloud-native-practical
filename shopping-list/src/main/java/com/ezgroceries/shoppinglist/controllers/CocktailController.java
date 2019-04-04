@@ -1,27 +1,26 @@
 package com.ezgroceries.shoppinglist.controllers;
 
-import com.ezgroceries.shoppinglist.model.CocktailManager;
 import com.ezgroceries.shoppinglist.model.entities.Cocktail;
+import com.ezgroceries.shoppinglist.services.CocktailService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/cocktails", produces = "application/json")
 public class CocktailController {
 
-    private final CocktailManager cocktailManager;
+    private final CocktailService cocktailService;
 
-    public CocktailController(CocktailManager cocktailManager) {
-        this.cocktailManager = cocktailManager;
+    public CocktailController(CocktailService cocktailService) {
+        this.cocktailService = cocktailService;
     }
 
     @GetMapping
     public List<Cocktail> get(@RequestParam String search) {
-        return cocktailManager.search(search);
+        return cocktailService.search(search);
     }
 
 }

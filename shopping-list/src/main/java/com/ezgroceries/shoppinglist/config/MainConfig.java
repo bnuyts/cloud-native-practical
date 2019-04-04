@@ -1,12 +1,12 @@
 package com.ezgroceries.shoppinglist.config;
 
 import com.ezgroceries.shoppinglist.clients.CocktailDBClient;
-import com.ezgroceries.shoppinglist.model.CocktailManager;
-import com.ezgroceries.shoppinglist.model.ShoppingListsManager;
 import com.ezgroceries.shoppinglist.repositories.CocktailRepository;
 import com.ezgroceries.shoppinglist.repositories.ShoppingListRepository;
 import com.ezgroceries.shoppinglist.services.CocktailService;
-import com.ezgroceries.shoppinglist.services.ShoppingListService;
+import com.ezgroceries.shoppinglist.services.CocktailServiceImpl;
+import com.ezgroceries.shoppinglist.services.ShoppingListServiceImpl;
+import com.ezgroceries.shoppinglist.services.ShoppingListsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -27,12 +27,12 @@ public class MainConfig {
     }
 
     @Bean
-    public CocktailManager cocktailManager(CocktailRepository cocktailRepository, CocktailDBClient cocktailDBClient) {
-        return new CocktailService(cocktailRepository, cocktailDBClient);
+    public CocktailService cocktailManager(CocktailRepository cocktailRepository, CocktailDBClient cocktailDBClient) {
+        return new CocktailServiceImpl(cocktailRepository, cocktailDBClient);
     }
 
     @Bean
-    public ShoppingListsManager shoppingListsManager(CocktailRepository cocktailRepository, ShoppingListRepository shoppingListRepository) {
-        return new ShoppingListService(cocktailRepository, shoppingListRepository);
+    public ShoppingListsService shoppingListsManager(CocktailRepository cocktailRepository, ShoppingListRepository shoppingListRepository) {
+        return new ShoppingListServiceImpl(cocktailRepository, shoppingListRepository);
     }
 }
